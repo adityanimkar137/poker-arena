@@ -1,0 +1,1502 @@
+/* =========================================================
+   POKER ARENA
+   Final UI / UX Polish
+   Mafia / Underground Casino Theme
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #18251d 0%,
+            #0b0f0c 55%,
+            #050706 100%
+        );
+
+    color: #f4edda;
+}
+
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
+.game {
+    min-height: 100vh;
+
+    padding:
+        12px 20px 35px;
+
+    text-align: center;
+
+    position: relative;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   POKER TABLE
+========================================================= */
+
+.game::before {
+    content: "";
+
+    position: absolute;
+
+    top: 70px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: min(1100px, 94vw);
+
+    height: 650px;
+
+    border-radius: 48%;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #176642 0%,
+            #115235 55%,
+            #0a3b26 100%
+        );
+
+    border:
+        13px solid #4b3219;
+
+    box-shadow:
+        inset 0 0 0 3px #b4873b,
+        inset 0 0 65px rgba(0, 0, 0, 0.65),
+        0 20px 60px rgba(0, 0, 0, 0.75);
+
+    z-index: -2;
+}
+
+.game::after {
+    content: "";
+
+    position: absolute;
+
+    top: 92px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: min(1030px, 88vw);
+
+    height: 605px;
+
+    border:
+        1px solid rgba(
+            213,
+            174,
+            87,
+            0.3
+        );
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.game-header {
+    width: min(1100px, 100%);
+
+    height: 42px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    position: relative;
+
+    z-index: 10;
+}
+
+.game-header h1 {
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 25px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    color: #d8b45b;
+
+    text-shadow:
+        0 2px 6px #000;
+}
+
+.game-header button {
+    padding:
+        7px 13px;
+
+    background:
+        linear-gradient(
+            #171c18,
+            #0d110e
+        );
+
+    color: #d8b45b;
+
+    border:
+        1px solid #806329;
+
+    border-radius: 4px;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.1s ease;
+}
+
+.game-header button:hover {
+    background:
+        linear-gradient(
+            #242b25,
+            #121713
+        );
+
+    border-color: #b99449;
+}
+
+.game-header button:active {
+    transform: translateY(1px);
+}
+
+
+/* =========================================================
+   STATUS MESSAGE
+========================================================= */
+
+.message {
+    position: relative;
+
+    width: fit-content;
+
+    max-width: 90%;
+
+    min-height: 26px;
+
+    margin:
+        5px auto 0;
+
+    padding:
+        5px 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(0, 0, 0, 0.38);
+
+    border:
+        1px solid rgba(
+            185,
+            145,
+            62,
+            0.35
+        );
+
+    border-radius: 15px;
+
+    color: #e8d398;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   PLAYER SEATS
+========================================================= */
+
+.player {
+    position: relative;
+
+    z-index: 5;
+
+    width: 270px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+}
+
+.player:first-of-type {
+    margin-top: 12px;
+
+    margin-bottom: 5px;
+}
+
+.player h2 {
+    margin:
+        0 0 4px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: #d8b45b;
+
+    text-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.player p {
+    margin:
+        4px 0 0;
+
+    font-size: 12px;
+
+    color: #d0c9b4;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.cards {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 6px;
+
+    flex-wrap: nowrap;
+}
+
+.card {
+    width: 56px;
+
+    height: 78px;
+
+    flex-shrink: 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #e8e4da
+        );
+
+    color: #171717;
+
+    border:
+        1px solid #aaa69c;
+
+    border-radius: 6px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 4px 10px rgba(
+            0,
+            0,
+            0,
+            0.5
+        );
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.card span:last-child {
+    font-size: 21px;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 14px rgba(
+            0,
+            0,
+            0,
+            0.55
+        );
+}
+
+.hidden-card {
+    background:
+        repeating-linear-gradient(
+            45deg,
+            #571b22,
+            #571b22 6px,
+            #75252d 6px,
+            #75252d 12px
+        );
+
+    color: #d8b45b;
+
+    border:
+        2px solid #c49a47;
+
+    font-size: 24px;
+}
+
+
+/* =========================================================
+   COMMUNITY CARDS
+========================================================= */
+
+.community-section {
+    position: relative;
+
+    z-index: 5;
+
+    margin:
+        7px auto 4px;
+}
+
+.community-section h2 {
+    margin:
+        0 0 5px;
+
+    font-size: 9px;
+
+    font-weight: normal;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    color:
+        rgba(
+            230,
+            214,
+            165,
+            0.65
+        );
+}
+
+.community-section .cards {
+    min-height: 78px;
+}
+
+
+/* =========================================================
+   POT
+========================================================= */
+
+.pot {
+    position: relative;
+
+    z-index: 6;
+
+    width: 145px;
+
+    margin:
+        4px auto;
+
+    padding:
+        5px 12px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(15, 25, 19, 0.92),
+            rgba(5, 12, 8, 0.82)
+        );
+
+    border:
+        1px solid rgba(
+            205,
+            165,
+            72,
+            0.65
+        );
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 4px 12px rgba(
+            0,
+            0,
+            0,
+            0.35
+        );
+}
+
+.pot h2 {
+    margin: 0;
+
+    font-size: 8px;
+
+    font-weight: normal;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    color: #c6a65c;
+}
+
+.pot p {
+    margin:
+        1px 0 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    color: white;
+
+    text-shadow:
+        0 1px 5px rgba(255, 255, 255, 0.15);
+}
+
+
+/* =========================================================
+   YOUR SEAT
+========================================================= */
+
+.player:nth-of-type(2) {
+    margin-top: 6px;
+
+    margin-bottom: 5px;
+}
+
+
+/* =========================================================
+   CURRENT HAND
+========================================================= */
+
+.current-hand {
+    width: 210px;
+
+    margin:
+        4px auto;
+
+    padding:
+        4px 8px;
+
+    background:
+        rgba(
+            0,
+            0,
+            0,
+            0.25
+        );
+
+    border:
+        1px solid rgba(
+            180,
+            143,
+            63,
+            0.3
+        );
+
+    border-radius: 5px;
+}
+
+.current-hand h3 {
+    margin: 0;
+
+    font-size: 8px;
+
+    font-weight: normal;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: #999383;
+}
+
+.current-hand p {
+    margin:
+        2px 0 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    color: #e1c36f;
+}
+
+
+/* =========================================================
+   ACTION PANEL
+========================================================= */
+
+.action-panel {
+    width:
+        min(600px, 95vw);
+
+    margin:
+        5px auto 4px;
+
+    padding:
+        7px 10px;
+
+    background:
+        rgba(
+            7,
+            12,
+            9,
+            0.96
+        );
+
+    border:
+        1px solid #604a23;
+
+    border-radius: 6px;
+
+    position: relative;
+
+    z-index: 10;
+
+    box-shadow:
+        0 5px 15px rgba(
+            0,
+            0,
+            0,
+            0.3
+        );
+}
+
+.action-panel h2 {
+    display: none;
+}
+
+.action-panel p {
+    display: inline-block;
+
+    margin:
+        0 8px 5px;
+
+    font-size: 10px;
+
+    color: #aaa492;
+}
+
+.action-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    flex-wrap: nowrap;
+}
+
+.action-buttons button {
+    min-width: 90px;
+
+    padding:
+        8px 12px;
+
+    background:
+        linear-gradient(
+            #29322c,
+            #171c19
+        );
+
+    color: #e9dfc1;
+
+    border:
+        1px solid #695326;
+
+    border-radius: 4px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.1s ease,
+        box-shadow 0.15s ease;
+}
+
+.action-buttons button:hover:not(:disabled) {
+    background:
+        linear-gradient(
+            #39453d,
+            #202720
+        );
+
+    border-color:
+        #c09a4c;
+
+    box-shadow:
+        0 3px 8px rgba(
+            0,
+            0,
+            0,
+            0.35
+        );
+
+    transform: translateY(-1px);
+}
+
+.action-buttons button:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.action-buttons button:disabled {
+    opacity: 0.3;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   RAISE CONTROL
+========================================================= */
+
+.raise-control {
+    width:
+        min(500px, 95vw);
+
+    margin:
+        4px auto;
+
+    padding:
+        5px 10px;
+
+    background:
+        rgba(
+            7,
+            12,
+            9,
+            0.92
+        );
+
+    border:
+        1px solid #4e3c1e;
+
+    border-radius: 5px;
+
+    position: relative;
+
+    z-index: 10;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+}
+
+.raise-control label {
+    margin-right: 2px;
+
+    font-size: 10px;
+
+    color: #aaa38e;
+}
+
+.raise-control input {
+    width: 70px;
+
+    padding:
+        5px;
+
+    background:
+        #0e130f;
+
+    color: #f2e8c9;
+
+    border:
+        1px solid #735a28;
+
+    border-radius: 3px;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    outline: none;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.raise-control input:focus {
+    border-color: #c09a4c;
+
+    box-shadow:
+        0 0 0 2px rgba(
+            192,
+            154,
+            76,
+            0.12
+        );
+}
+
+.raise-control button {
+    margin-left: 2px;
+
+    padding:
+        6px 12px;
+
+    background:
+        linear-gradient(
+            #795923,
+            #5d4219
+        );
+
+    color: white;
+
+    border:
+        1px solid #bd9140;
+
+    border-radius: 3px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        transform 0.1s ease,
+        border-color 0.15s ease;
+}
+
+.raise-control button:hover:not(:disabled) {
+    background:
+        linear-gradient(
+            #936d2b,
+            #6e4d1c
+        );
+
+    border-color: #d3aa55;
+
+    transform: translateY(-1px);
+}
+
+.raise-control button:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.raise-control button:disabled {
+    opacity: 0.35;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   NEW ROUND
+========================================================= */
+
+.controls {
+    margin:
+        5px auto;
+
+    display: flex;
+
+    justify-content: center;
+
+    position: relative;
+
+    z-index: 10;
+}
+
+.controls button {
+    padding:
+        7px 18px;
+
+    background:
+        linear-gradient(
+            #a37a2e,
+            #694d1c
+        );
+
+    color: white;
+
+    border:
+        1px solid #d0a34b;
+
+    border-radius: 4px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        transform 0.1s ease,
+        box-shadow 0.15s ease;
+}
+
+.controls button:hover:not(:disabled) {
+    background:
+        linear-gradient(
+            #b58a37,
+            #765722
+        );
+
+    box-shadow:
+        0 4px 10px rgba(
+            0,
+            0,
+            0,
+            0.35
+        );
+
+    transform: translateY(-1px);
+}
+
+.controls button:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.controls button:disabled {
+    opacity: 0.35;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   STAGE / TURN
+========================================================= */
+
+.game > h3 {
+    display: inline-block;
+
+    margin:
+        3px 2px;
+
+    padding:
+        3px 7px;
+
+    background:
+        rgba(
+            0,
+            0,
+            0,
+            0.2
+        );
+
+    border-radius: 3px;
+
+    font-size: 8px;
+
+    font-weight: normal;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    color: #77766d;
+}
+
+
+/* =========================================================
+   SHOWDOWN
+========================================================= */
+
+.showdown {
+    width:
+        min(450px, 90vw);
+
+    margin:
+        10px auto;
+
+    padding:
+        12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 20, 16, 0.97),
+            rgba(6, 10, 8, 0.97)
+        );
+
+    border:
+        1px solid #806329;
+
+    border-radius: 6px;
+
+    position: relative;
+
+    z-index: 15;
+
+    box-shadow:
+        0 8px 25px rgba(
+            0,
+            0,
+            0,
+            0.55
+        );
+}
+
+.showdown h2 {
+    margin:
+        0 0 8px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 17px;
+
+    letter-spacing: 1px;
+
+    color: #e1c36f;
+
+    text-transform: uppercase;
+}
+
+.showdown p {
+    margin:
+        4px;
+
+    font-size: 12px;
+
+    color: #ddd5c0;
+}
+
+
+/* =========================================================
+   GAME OVER
+========================================================= */
+
+.game-over {
+    width:
+        min(430px, 90vw);
+
+    margin:
+        15px auto;
+
+    padding:
+        14px;
+
+    background:
+        rgba(
+            20,
+            9,
+            10,
+            0.94
+        );
+
+    border:
+        1px solid #7a3b42;
+
+    border-radius: 6px;
+
+    position: relative;
+
+    z-index: 10;
+}
+
+.game-over h2 {
+    margin:
+        0 0 7px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    color: #d8b45b;
+}
+
+.game-over p {
+    margin:
+        4px 0;
+
+    font-size: 11px;
+
+    color: #c7beb0;
+}
+
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+.settings-panel {
+    position: relative;
+
+    z-index: 20;
+
+    width:
+        min(420px, 92vw);
+
+    margin:
+        8px auto;
+
+    padding:
+        14px;
+
+    background:
+        #0d120f;
+
+    border:
+        1px solid #806329;
+
+    border-radius: 6px;
+
+    box-shadow:
+        0 8px 25px rgba(
+            0,
+            0,
+            0,
+            0.5
+        );
+}
+
+
+/* =========================================================
+   STATS / HISTORY
+========================================================= */
+
+.stats-panel,
+.history-panel {
+    width:
+        min(650px, 95vw);
+
+    margin:
+        35px auto 20px;
+
+    padding:
+        16px;
+
+    background:
+        #0d120f;
+
+    border:
+        1px solid #46371d;
+
+    border-radius: 7px;
+
+    position: relative;
+
+    z-index: 5;
+
+    box-shadow:
+        0 8px 25px rgba(
+            0,
+            0,
+            0,
+            0.25
+        );
+}
+
+.stats-panel h2,
+.history-panel h2 {
+    margin:
+        0 0 12px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 16px;
+
+    color: #cba958;
+}
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 7px;
+}
+
+.stats-grid div {
+    padding:
+        9px 4px;
+
+    background:
+        #171d19;
+
+    border:
+        1px solid #292f2a;
+
+    border-radius: 5px;
+
+    transition:
+        border-color 0.15s ease,
+        background 0.15s ease;
+}
+
+.stats-grid div:hover {
+    background: #1c241f;
+
+    border-color: #4a3b20;
+}
+
+.stats-grid strong {
+    display: block;
+
+    font-size: 19px;
+
+    color: #e1c36f;
+}
+
+.stats-grid span {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+
+    color: #77776e;
+}
+
+
+/* =========================================================
+   HISTORY
+========================================================= */
+
+.history-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    max-height: 220px;
+
+    overflow-y: auto;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        #806329
+        #0d120f;
+}
+
+.history-item {
+    padding:
+        8px 10px;
+
+    background:
+        #171d19;
+
+    border-left:
+        3px solid #806329;
+
+    border-radius: 4px;
+
+    text-align: left;
+
+    transition:
+        background 0.15s ease;
+}
+
+.history-item:hover {
+    background: #1b231e;
+}
+
+.history-item p {
+    margin:
+        2px 0;
+
+    font-size: 11px;
+
+    color: #aaa596;
+}
+
+
+/* =========================================================
+   BUTTON ACCESSIBILITY
+========================================================= */
+
+button {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline:
+        2px solid #c09a4c;
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .game {
+        padding:
+            10px 7px 30px;
+    }
+
+    .game::before {
+        top: 65px;
+
+        width: 98vw;
+
+        height: 650px;
+
+        border-width: 8px;
+    }
+
+    .game::after {
+        top: 82px;
+
+        width: 93vw;
+
+        height: 615px;
+    }
+
+    .game-header {
+        height: 38px;
+    }
+
+    .game-header h1 {
+        font-size: 20px;
+
+        letter-spacing: 2px;
+    }
+
+    .game-header button {
+        padding:
+            6px 9px;
+
+        font-size: 10px;
+    }
+
+    .message {
+        font-size: 10px;
+
+        padding:
+            5px 12px;
+    }
+
+    .player {
+        width: 100%;
+    }
+
+    .player:first-of-type {
+        margin-top: 12px;
+    }
+
+    .card {
+        width: 50px;
+
+        height: 72px;
+
+        font-size: 16px;
+    }
+
+    .card span:last-child {
+        font-size: 19px;
+    }
+
+    .hidden-card {
+        font-size: 22px;
+    }
+
+    .action-buttons {
+        flex-wrap: wrap;
+    }
+
+    .action-buttons button {
+        min-width: 75px;
+
+        padding:
+            8px 9px;
+
+        font-size: 11px;
+    }
+
+    .action-panel p {
+        margin:
+            0 4px 5px;
+    }
+
+    .raise-control {
+        flex-wrap: wrap;
+    }
+
+    .raise-control label {
+        display: block;
+
+        width: 100%;
+
+        margin:
+            0 0 4px;
+    }
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .stats-panel,
+    .history-panel {
+        margin-top: 30px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .game-header h1 {
+        font-size: 17px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .card {
+        width: 44px;
+
+        height: 64px;
+
+        font-size: 14px;
+    }
+
+    .card span:last-child {
+        font-size: 17px;
+    }
+
+    .hidden-card {
+        font-size: 19px;
+    }
+
+    .cards {
+        gap: 4px;
+    }
+
+    .action-buttons {
+        gap: 4px;
+    }
+
+    .action-buttons button {
+        min-width: 68px;
+
+        padding:
+            7px 6px;
+
+        font-size: 10px;
+    }
+
+    .pot {
+        width: 130px;
+    }
+
+    .pot p {
+        font-size: 18px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
+    }
+}
